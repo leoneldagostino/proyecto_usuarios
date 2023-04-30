@@ -16,7 +16,6 @@ class Conexion:
         if cls._pool is None:
             try:
                 cls._pool = pool.SimpleConnectionPool(cls._MIN,cls._MAX,database = cls._DATABASE,user = cls._USERNAME,password = cls._PASSWORD,host = cls._HOST,port = cls._DB_PORT)
-                log.debug(f"Creacion del pool exitosa: {cls._pool}")
                 return cls._pool
             except Exception as e:
                 log.error(F'Ocurrio un error al obtener el pool: {e}')
@@ -28,13 +27,11 @@ class Conexion:
     @classmethod
     def obtener_conexion(cls):
         conexion = cls.obtener_pool().getconn()#este metodo realizara la conexion correspondiente para que sea utilizada por el cliente
-        log.debug(f'Conexcion obtenida del pool: {conexion}')
         return conexion
        
     @classmethod
     def liberar_conexion(cls,conexion):
         cls.obtener_pool().putconn(conexion)#el metodo regresara la conexion al pool de conexiones para que se utilice en otro momento o otro cliente lo utilice 
-        log.debug(f'Regresamos la conexion al pool: {conexion}')
         
         
     @classmethod

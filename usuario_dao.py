@@ -13,7 +13,6 @@ class usuario_dao:
         sentencia = cls._SELECIONAR       
         with cursor_pool() as cursor:
             cursor.execute(sentencia)   
-            log.debug('Seleccion existosa')         
             registros = cursor.fetchall()
             usuarios = []
             for registro in registros:
