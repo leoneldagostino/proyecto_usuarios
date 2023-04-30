@@ -26,7 +26,7 @@ class usuario_dao:
         datos = (usuario.user_name, usuario.password)
         with cursor_pool() as cursor:
             cursor.execute(sentencia,datos)
-            log.debug("Datos insertados correctamente")
+            log.info("Datos insertados correctamente")
             return cursor.rowcount
         
     @classmethod
@@ -35,7 +35,7 @@ class usuario_dao:
         with cursor_pool() as cursor:
             datos = (usuario.user_name,usuario.password,usuario.id_usuario)
             cursor.execute(sentencia,datos)
-            log.debug(f"persona actualizada {usuario}")
+            log.info(f"persona actualizada {usuario}")
             return cursor.rowcount
               
     @classmethod
@@ -44,7 +44,7 @@ class usuario_dao:
         with cursor_pool() as cursor:
             dato = (usuario.id_usuario,)
             cursor.execute(sentencia,dato)
-            log.debug(f"Persona eliminada {usuario}")
+            log.info(f"Persona eliminada {usuario}")
             return cursor.rowcount
         
 
