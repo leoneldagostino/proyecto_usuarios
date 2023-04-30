@@ -1,7 +1,5 @@
-from cursor_pool import cursor_pool
 from usuario_dao import usuario_dao
 from usuario import usuario
-from base_datos import Conexion
 
 
 
